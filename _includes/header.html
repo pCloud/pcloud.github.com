@@ -1,0 +1,23 @@
+<header class="site-header" role="banner">
+
+  <div class="wrapper">
+
+    <a class="site-logo" href="{{ "/" | relative_url}}">
+      <img src="{{ "/assets/images/logo.png" | relative_url }}" data-src="{{ "/assets/images/logo.png" | relative_url }}" data-src-retina="{{ "/assets/images/logo@2x.png" | relative_url }}" width="133">
+    </a>
+
+    <nav class="site-nav">
+      <div class="trigger">
+        {% for my_page in site.pages %}
+          {% if my_page.title %}
+          <a class="page-link" href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a>
+          {% endif %}
+        {% endfor %}
+
+        <a class="page-link" href="https://www.pcloud.com/" target="_blank">GitHub</a>
+      </div>
+    </nav>
+
+  </div>
+
+</header>

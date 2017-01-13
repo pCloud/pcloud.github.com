@@ -1,0 +1,16 @@
+<div id="left_menu" class="stick">
+  {% for collection in site.collections %}
+    {% if collection.label != 'posts' %}
+      <div class="top_level">{{ collection.name }}</div>
+      <ul class="categories-list">
+        {% for doc in collection.docs %}
+          {% if doc.title == page.title %}
+            <li>{{ doc.title | escape }}</li>
+          {% else %}
+            <li><a href="{{ doc.url | relative_url }}">{{ doc.title | escape }}</a></li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    {% endif %}
+  {% endfor %}
+</div>

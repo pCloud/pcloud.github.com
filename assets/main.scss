@@ -1,0 +1,396 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+@charset "utf-8";
+
+// Our variables
+$base-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+$base-font-size:   16px;
+$base-font-weight: 400;
+$small-font-size:  $base-font-size * 0.875;
+$base-line-height: 1.5;
+
+$spacing-unit:     30px;
+
+$text-color:       #111;
+$background-color: #fdfdfd;
+$brand-color:      #13b2c4;
+
+$grey-color:       #828282;
+$grey-color-light: lighten($grey-color, 40%);
+$grey-color-dark:  darken($grey-color, 25%);
+$grey-color-border: #eaeaea;
+
+// Width of the content area
+$content-width:    1020px;
+$left-menu:        200px;
+
+$on-palm:          600px;
+$on-laptop:        1000px;
+
+// Minima also includes a mixin for defining media queries.
+// Use media queries like this:
+// @include media-query($on-palm) {
+//     .wrapper {
+//         padding-right: $spacing-unit / 2;
+//         padding-left: $spacing-unit / 2;
+//     }
+// }
+
+// Import partials from the `minima` theme.
+@import "minima";
+
+
+// pCloud styles
+html {
+	height: 101%;
+}
+body {
+	font: 400 15px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
+	background-color: #fafafa;
+}
+
+.main_wrap {
+	background-color: #FFF;
+}
+
+.float-left {
+	float: left;
+}
+.float-right {
+	float: right;
+}
+
+.site-header {
+    min-height: 54px;
+    border: 0;
+    position: relative;
+    background-color: #272829;
+}
+.site-logo {
+	float: left;
+	margin: 11px 0 0 0;
+}
+.site-nav .page-link {
+	color: #FFF;
+}
+
+#left_menu {
+	float: left;
+	width: 200px;
+	font-size: 14px;
+
+	&.stick {
+		position: fixed;
+		top: 22px;
+	}
+
+	.top_level {
+		font-weight: 600;
+	}
+
+	.categories-list {
+		list-style: none;
+		margin: 0 0 10px 20px;
+
+		li {
+			color: #13b2c4;
+			cursor: default;
+
+			a {
+				color: #666666;
+			}
+		}
+	}
+}
+
+.site-footer {
+	border: 0;
+	padding: 52px 0;
+	border-top: 1px solid #f8f8f8;
+	background-color: #fafafa;
+}
+.footer-logo {
+	float: left;
+	margin: 0 10px 0 0;
+}
+.footer-title {
+	float: left;
+	font-size: 11px;
+	line-height: 16px;
+	margin: 1px 0 0 0;
+}
+.footer-contact {
+	float: left;
+	clear: both;
+	color: #6f6f6f;
+	font-size: 11px;
+	line-height: 11px;
+}
+.social-media-list li {
+	float: left;
+	margin: 0 0 0 29px;
+}
+.social-media-list a {
+	color: #666666;
+	font-size: 13px;
+
+	&:hover {
+		color: #111;
+		text-decoration: none;
+	}
+}
+
+.page-content {
+	min-height: 300px;
+
+	.highlighter-rouge {
+		position: relative;
+		overflow: hidden;
+
+		&:hover {
+			.copy_box {
+				display: block;
+			}
+		}
+
+		.copy_box {
+			display: none;
+			position: absolute;
+			top: 0px;
+			right: 1px;
+			left: auto;
+			background-color: #FFF;
+			border: 1px solid #eaeaea;
+			border-right: 0;
+			border-radius: 3px;
+			padding: 3px 12px;
+			font-size: 11px;
+			color: #039cad;
+			font-weight: 600;
+			cursor: pointer;
+			text-transform: uppercase;
+			box-shadow: -2px 2px 14px rgba(0,0,0,0.1);
+
+			&:hover {
+				text-decoration: underline;
+			}
+
+			&.copied {
+				.success {
+					display: block;
+					position: absolute;
+					width: 100%;
+					height: 100%;
+					top: 0;
+					left: 0;
+					border-radius: 3px;
+					background: url(images/green_check.png) no-repeat center center #FFF;
+				}
+			}
+			&.not_copied {
+				.unsuccess {
+					display: block;
+					position: absolute;
+					width: 100%;
+					height: 100%;
+					top: 0;
+					left: 0;
+					border-radius: 3px;
+					background: url(images/red_error.png) no-repeat center center #FFF;
+				}
+			}
+		}
+	}
+}
+
+article.post {
+	margin-bottom: 20px;
+}
+
+.box_wrap {
+    float: left;
+    margin: 0 0 40px 0;
+}
+.content_box {
+	float: left;
+	padding: 0px 20px 0 0;
+	box-sizing: border-box;
+
+	&.x3 {
+		width: 33.333333%;
+	}
+
+	.headline {
+		font-weight: 600;
+	}
+}
+
+.txtarea-hide {
+	height: 1px;
+	width: 1px;
+	top: 0px;
+	left: 0px;
+	border: 0;
+	padding: 0;
+	position: absolute;
+	background: transparent;
+
+	&:focus {
+		outline: none;
+		border: 0;
+	}
+}
+
+.page-content, .post-content {
+	hr {
+		display: block;
+		height: 1px;
+		border: none;
+		margin: 20px 0;
+		background-color: #c1c1c1;
+	}
+
+	h5 {
+		font-size: 14px;
+		font-weight: 600;
+	}
+}
+
+.icon--twitter svg {
+	width: 19px;
+	height: 19px;
+
+	path {
+		fill: #1da1f2;		
+	}
+}
+.icon--github svg {
+	width: 18px;
+	height: 18px;
+
+	path {
+		fill: #171516;		
+	}
+}
+
+.icon--website svg {
+	width: 18px;
+	height: 18px;
+	margin: 0 6px 0 0;
+
+	path {
+		fill: #FFF;
+	}
+}
+
+.docs-prevnext {
+	display: none;
+	padding: 10px 0 35px 0;
+	border-top: 1px solid #eaeaea;
+
+	&.show {
+		display: block;
+	}
+
+	.prev a, .next a {
+		font-size: 15px;
+
+		&:hover {
+			text-decoration: none;
+		}
+	}
+
+	.prev img {
+		float: left;
+		margin: 8px 10px 0 0;
+	}
+	.next img {
+		float: right;
+		margin: 8px 0 0 10px;
+	}
+}
+
+#scroll_top {
+	opacity: 0;
+	position: fixed;
+	right: 30px;
+	bottom: 20px;
+
+	&.show {
+		opacity: 0.5;
+		cursor: pointer;
+
+		&:hover {
+			opacity: 1;
+		}
+	}
+}
+
+blockquote {
+	color: #666666;
+	font-size: 15px;
+	font-style: normal;
+	padding: 10px 0 10px 18px;
+	border: 1px solid #fcf7f1;
+	border-left: 2px solid #ffcc99;
+	background-color: #fffaf4;
+
+	p:first-child {
+		margin-bottom: 3px;
+
+		strong {
+			font-size: 18px;
+			color: #202020;
+		}
+	}
+}
+
+@include media-query($on-palm) {
+  #left_menu {
+  	&.stick {
+		width: 100%;
+		position: static;
+		padding: 0px 0 7px 0;
+		margin: 0 0 27px 0;
+		border-bottom: 1px solid #ccc;
+  	}
+  }
+
+  .page-content {
+  	padding: 15px 0 0 0;
+  }
+
+  article {
+  	&.post {
+		width: 100%;
+		float: left;
+		margin: 0 0 25px 0;
+
+		p code {
+			word-wrap: break-word;
+		}
+  	}
+  }
+
+  .post-title, .post-content h1, .post-content h2 {
+  	font-size: 24px;
+  }
+
+  .docs-prevnext {
+  	padding-bottom: 0;
+  }
+
+  .site-footer {
+  	padding: 32px 0;
+
+  	.float-right {
+		float: left;
+		margin: 20px 0 0 0;
+
+		.social-media-list li {
+			margin: 0 25px 0 0;
+		}	
+  	}
+  }
+}

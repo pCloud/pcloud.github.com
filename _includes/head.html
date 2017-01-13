@@ -1,0 +1,149 @@
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
+	<meta name="description" content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}">
+
+	<link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}">
+	<link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}">
+	<link rel="alternate" type="application/rss+xml" title="{{ site.title | escape }}" href="{{ "/feed.xml" | relative_url }}">
+	<link href="{{ "/assets/images/favicon.ico" | relative_url }}" rel="shortcut icon" type="image/x-icon">
+
+	{% if jekyll.environment == 'production' and site.google_analytics %}
+	{% include google-analytics.html %}
+	{% endif %}
+
+	<script>
+		var isRetina = window.devicePixelRatio > 1;
+		var isMobile = /Mobile|mini|Fennec|Android|iP(od|hone)/.test(navigator.appVersion);
+		var leftMenu;
+		var scrollButton;
+		var allImages;
+		var timeOut;
+
+		function runScrollTo() {
+			scrollTo(document.body, 0, 200);
+		};
+
+		function scrollTo(element, to, duration) {
+			if (duration <= 0) {
+				return;
+			}
+
+			var difference = to - element.scrollTop;
+			var perTick = difference / duration * 10;
+
+			setTimeout(function() {
+				element.scrollTop = element.scrollTop + perTick;
+
+				if (element.scrollTop == to) {
+					return;
+				}
+
+				scrollTo(element, to, duration - 10);
+			}, 10);
+		};
+
+		function keyuboardArrowNav(e) {
+			var key = e.keyCode || window.event.keyCode;
+
+			if (key == 37 && document.getElementById('prev_page')) {
+				window.location = document.getElementById('prev_page').getAttribute('href');
+			} else if (key == 39 && document.getElementById('next_page')) {
+				window.location = document.getElementById('next_page').getAttribute('href');
+			}
+		};
+
+		function trackScroll(e) {
+			if (document.body.scrollTop > 64) {
+				scrollButton.classList.add('show');
+			} else {
+				scrollButton.classList.remove('show');
+			}
+
+			if (document.body.scrollTop > 64 && window.innerHeight - 60 > leftMenu.clientHeight) {
+				leftMenu.classList.add('stick');
+			} else {
+				leftMenu.classList.remove('stick');
+			}
+		};
+
+		function copyCode(e) {
+			var canCopy = true;
+			var copyBtn = e;
+
+			copyBtn.nextSibling.select();
+
+			try {
+				var successful = document.execCommand('copy');
+
+				if (!successful) {
+					canCopy = false;
+				}
+			} catch (err) {
+				canCopy = false;
+			}
+
+			if (canCopy) {
+				copyBtn.classList.add('copied');
+			} else {
+				copyBtn.classList.add('not_copied');
+			}
+
+			clearTimeout(timeOut);
+
+			timeOut = setTimeout(function() {
+				copyBtn.classList.remove('copied', 'not_copied');
+			}, 3000);
+		};
+
+		function UIchanges() {
+			var codeBlocks = document.getElementsByTagName('code');
+
+			allImages = document.images;
+			leftMenu = document.getElementById('left_menu');
+			scrollButton = document.getElementById('scroll_top');
+
+			for (var i = 0; i < allImages.length; i++) {
+				if (allImages[i].getAttribute('data-src-retina')) {
+					allImages[i].setAttribute('src',  allImages[i].getAttribute(isRetina ? 'data-src-retina' : 'data-src'));  
+				}
+			}
+
+			if (!isMobile) {
+				scrollButton.addEventListener('click', runScrollTo,false);
+				document.addEventListener('keyup', keyuboardArrowNav, false);
+				window.addEventListener('scroll', trackScroll, false);
+
+				trackScroll();
+			}
+
+			if (codeBlocks.length) {
+				var copyButton = [
+					'<div class="copy_box" onclick="copyCode(this);">',
+						'Copy',
+						'<div class="success" title="Copied to Clipboard"></div>',
+						'<div class="unsuccess" title="Could not copy to clipboard"></div>',
+					'</div>'
+				].join('');
+
+				for (var i in codeBlocks) {
+					if (typeof codeBlocks[i] == 'object' && codeBlocks[i].parentNode.nodeName.toLowerCase() == 'pre') {
+						var txtarea = [
+							'<textarea class="txtarea-hide">',
+								codeBlocks[i].outerHTML.replace(/<span[^>]*>/img, '').replace(/<\/span>/g, '').replace(/<code[^>]*>/img, '').replace(/<\/code>/g, ''),
+							'</textarea>'
+						].join('');
+
+						codeBlocks[i].parentNode.insertAdjacentHTML('beforeBegin', copyButton);
+						codeBlocks[i].parentNode.insertAdjacentHTML('beforeBegin', txtarea);
+					}
+				}
+			}
+		};
+
+		document.addEventListener('DOMContentLoaded', UIchanges, false);		
+	</script>
+</head>

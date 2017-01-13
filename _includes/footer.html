@@ -1,0 +1,45 @@
+<img id="scroll_top" src="{{ "/assets/images/scrolltop.png" | relative_url }}" width="38">
+
+<footer class="site-footer">
+
+  <div class="wrapper">
+
+    <div class="float-left">
+      <a href="https://www.pcloud.com/" target="_blank">
+        <img class="footer-logo" src="{{ "/assets/images/lazy.png" | relative_url }}" data-src="{{ "/assets/images/p-cloud.png" | relative_url }}" data-src-retina="{{ "/assets/images/p-cloud@2x.png" | relative_url }}" width="46">
+      </a>
+      <div class="float-left">
+        <div class="footer-title">
+          pCloud
+        </div>
+        {% if site.email %}
+          <a href="mailto:{{ site.email }}" class="footer-contact">{{ site.email }}</a>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="float-right">
+      <ul class="social-media-list">
+        {% if site.facebook_username %}
+        <li>
+          {% include icon-facebook.html username=site.facebook_username %}
+        </li>
+        {% endif %}
+
+        {% if site.twitter_username %}
+        <li>
+          {% include icon-twitter.html username="pCloudApp" %}
+        </li>
+        {% endif %}
+
+        {% if site.github_username %}
+        <li>
+          {% include icon-github.html username=site.github_username %}
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+
+  </div>
+
+</footer>

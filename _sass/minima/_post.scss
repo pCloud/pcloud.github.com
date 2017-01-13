@@ -1,0 +1,16 @@
+article.post {
+  float: right;
+
+  width: -webkit-calc(#{$content-width} - #{$left-menu} - (#{$spacing-unit} * 4));
+  width:         calc(#{$content-width} - #{$left-menu} - (#{$spacing-unit} * 4));
+
+  margin-left: calc(#{$spacing-unit} * 2);
+}
+
+.prev {
+  float: left;
+}
+
+.next {
+  float: right;
+}

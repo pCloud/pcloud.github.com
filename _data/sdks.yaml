@@ -1,0 +1,11 @@
+- name: Swift SDK
+  description: Swift SDK that can be used for iOS and macOS.
+  github: https://www.gihutb.com/pcloud/swift-sdk
+
+- name: JavaScript SDK
+  description: Javascript SDK that can be used for NodeJS and Web.
+  github: https://www.gihutb.com/pcloud/javascript-sdk
+
+- name: C/C++ SDK
+  description: C/C++ SDK built as dll and so file.
+  github: https://www.gihutb.com/pcloud/c-sdk
