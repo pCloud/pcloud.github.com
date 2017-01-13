@@ -91,7 +91,11 @@ body {
 
 	.categories-list {
 		list-style: none;
-		margin: 0 0 10px 20px;
+		margin: 0 0 10px 0;
+
+		&.sep {
+			
+		}
 
 		li {
 			color: #13b2c4;
@@ -143,6 +147,13 @@ body {
 
 .page-content {
 	min-height: 300px;
+
+	.post-header {
+		&.no-border {
+			border: 0;
+			margin: 0 0 -5px 0;
+		}
+	}
 
 	.highlighter-rouge {
 		position: relative;
@@ -210,12 +221,21 @@ article.post {
 
 .box_wrap {
     float: left;
+    width: 100%;
     margin: 0 0 40px 0;
+}
+.home-headline {
+	margin: 0;
 }
 .content_box {
 	float: left;
+	width: 100%;
 	padding: 0px 20px 0 0;
 	box-sizing: border-box;
+
+	&.x2 {
+		width: 50%;
+	}
 
 	&.x3 {
 		width: 33.333333%;
@@ -223,6 +243,7 @@ article.post {
 
 	.headline {
 		font-weight: 600;
+		font-size: 25px;
 	}
 }
 

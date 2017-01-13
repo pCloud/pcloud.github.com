@@ -1,7 +1,12 @@
 <div id="left_menu" class="stick">
+  <ul class="categories-list sep">
+    <li>
+      <a href="https://docs.pcloud.com/" target="_blank">API Docs</a>
+    </li>
+  </ul>
   {% for collection in site.collections %}
     {% if collection.label != 'posts' %}
-      <div class="top_level">{{ collection.name }}</div>
+      <!-- <div class="top_level">{{ collection.name }}</div> -->
       <ul class="categories-list">
         {% for doc in collection.docs %}
           {% if doc.title == page.title %}

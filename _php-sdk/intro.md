@@ -16,6 +16,9 @@ A PHP library to access [pCloud API](https://docs.pcloud.com/)
   * [Using Composer](#using-composer)
   * [Manually](#manually)
 * [Initializing the SDK](#initializing-the-sdk)
+* [Examples](#examples)
+  * [File](#file-examples)
+  * [Folder](#folder-examples)
 
 ---
 
@@ -71,3 +74,58 @@ Note that `redirect_uri` is optional.
 Run `/example/code.php` to get an authorization code and use this code in `/example/auth.php`. This will generate `/lib/pCloud/app.cred` file with your credentials.
 
 ---
+
+## Examples
+
+### File examples
+
+#### Upload a file
+~~~
+<?php
+
+$pCloudFile = new pCloud\File();
+
+$pCloudFile->upload($filePath);
+~~~
+
+#### Download a file
+~~~
+<?php
+
+$pCloudFile = new pCloud\File();
+
+$pCloudFile->download($fileId, $destinationFolder);
+~~~
+
+### Folder examples
+
+#### Create a new folder
+
+~~~
+<?php
+
+$pCloudFolder = new pCloud\Folder();
+
+$pCloudFolder->create($folderName, $parentId);
+~~~
+
+
+#### List root
+
+~~~
+<?php
+
+$pCloudFolder = new pCloud\Folder();
+
+$pCloudFolder->listRoot();
+~~~
+
+#### Get folder content
+
+~~~
+<?php
+
+$pCloudFolder = new pCloud\Folder();
+
+$pCloudFolder->getContent($folderId);
+~~~
